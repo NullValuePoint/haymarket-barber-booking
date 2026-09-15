@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haymarket Barber Co. — Lincoln, NE | Book Your Chair</title>
+  <meta name="description" content="Haymarket Barber Co. is Lincoln's classic barbershop. Choose a service, pick your barber, grab a time slot, and book online in under two minutes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Haymarket Barber Co. home">
+        <span class="pole" aria-hidden="true"></span>
+        <span class="brand-text">Haymarket <em>Barber Co.</em></span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#book">Book</a>
+        <a href="#services">Services</a>
+        <a href="#barbers">Barbers</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <a class="btn btn-gold btn-sm" href="#book">Book now</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="hero-bg" role="img" aria-label="Classic barbershop interior with leather chairs and warm lighting"></div>
+      <div class="wrap hero-inner">
+        <p class="kicker">Lincoln, Nebraska &middot; Est. 2016</p>
+        <h1>Look sharp.<br>Feel sharper.</h1>
+        <p class="lede">Classic cuts, skin fades, and straight-razor shaves in the heart of the Haymarket. Pick your service, choose your barber, and lock in a time in under two minutes.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold btn-lg" href="#book">Book your chair</a>
+          <a class="btn btn-ghost btn-lg" href="#services">See services</a>
+        </div>
+        <ul class="hero-stats">
+          <li><strong>4.9</strong><span>average rating</span></li>
+          <li><strong>12k+</strong><span>cuts delivered</span></li>
+          <li><strong>3</strong><span>master barbers</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ BOOKING WIDGET ============ -->
+    <section id="book" class="booking-section">
+      <div class="wrap">
+        <p class="kicker kicker-dark">Online booking</p>
+        <h2>Book your appointment</h2>
+        <p class="section-sub">Five quick steps. Your time slot is held while you finish booking.</p>
+
+        <div class="booking-widget">
+          <ol class="stepper" id="stepper" aria-label="Booking progress">
+            <li data-goto="1"><span class="step-num">1</span><span class="step-label">Service</span></li>
+            <li data-goto="2"><span class="step-num">2</span><span class="step-label">Barber</span></li>
+            <li data-goto="3"><span class="step-num">3</span><span class="step-label">Date &amp; time</span></li>
+            <li data-goto="4"><span class="step-num">4</span><span class="step-label">Details</span></li>
+            <li data-goto="5"><span class="step-num">5</span><span class="step-label">Done</span></li>
+          </ol>
+
+          <div class="booking-body">
+            <div class="panels">
+
+              <section class="panel" data-panel="1" aria-label="Choose a service">
+                <h3>What are we doing today?</h3>
+                <div class="card-grid" id="serviceGrid"></div>
+              </section>
+
+              <section class="panel" data-panel="2" aria-label="Choose a barber" hidden>
+                <h3>Who's holding the clippers?</h3>
+                <div class="card-grid card-grid-barbers" id="barberGrid"></div>
+              </section>
+
+              <section class="panel" data-panel="3" aria-label="Choose date and time" hidden>
+                <h3>Pick a day, then grab a time</h3>
+                <p class="panel-note" id="slotContext"></p>
+                <div class="date-strip" id="dateStrip" role="listbox" aria-label="Available days"></div>
+                <div class="slot-grid" id="slotGrid" aria-label="Available times"></div>
+                <p class="empty-note" id="slotEmpty" hidden>No open slots that day. Try another date.</p>
+              </section>
+
+              <section class="panel" data-panel="4" aria-label="Your details" hidden>
+                <h3>Almost done. Who's coming in?</h3>
+                <form id="detailsForm" novalidate>
+                  <div class="field">
+                    <label for="fName">Full name</label>
+                    <input id="fName" name="name" type="text" autocomplete="name" placeholder="e.g. Sam Becker">
+                    <p class="field-error" data-error-for="fName"></p>
+                  </div>
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="fPhone">Phone</label>
+                      <input id="fPhone" name="phone" type="tel" autocomplete="tel" placeholder="(402) 555-0100">
+                      <p class="field-error" data-error-for="fPhone"></p>
+                    </div>
+                    <div class="field">
+                      <label for="fEmail">Email</label>
+                      <input id="fEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+                      <p class="field-error" data-error-for="fEmail"></p>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="fNotes">Notes for your barber <span class="opt">(optional)</span></label>
+                    <textarea id="fNotes" name="notes" rows="3" maxlength="300" placeholder="Reference photos, allergies, running late, etc."></textarea>
+                  </div>
+                </form>
+              </section>
+
+              <section class="panel" data-panel="5" aria-label="Booking confirmed" hidden>
+                <div class="confirm">
+                  <span class="confirm-check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <h3>You're booked.</h3>
+                  <p class="confirm-ref">Booking reference <strong id="confirmRef"></strong></p>
+                  <dl class="confirm-list" id="confirmList"></dl>
+                  <p class="panel-note">A confirmation text is on its way. Please arrive five minutes early.</p>
+                  <button class="btn btn-dark" id="bookAnother" type="button">Book another appointment</button>
+                </div>
+              </section>
+
+              <div class="step-nav" id="stepNav">
+                <button class="btn btn-outline" id="backBtn" type="button">Back</button>
+                <button class="btn btn-gold" id="nextBtn" type="button">Continue</button>
+              </div>
+
+            </div>
+
+            <aside class="summary" aria-label="Booking summary">
+              <h4>Your booking</h4>
+              <dl id="summaryList">
+                <dt>Service</dt><dd data-sum="service">Not chosen</dd>
+                <dt>Barber</dt><dd data-sum="barber">Not chosen</dd>
+                <dt>Date</dt><dd data-sum="date">Not chosen</dd>
+                <dt>Time</dt><dd data-sum="time">Not chosen</dd>
+              </dl>
+              <div class="summary-total">
+                <span>Total due at shop</span>
+                <strong id="summaryPrice">$0</strong>
+              </div>
+              <p class="summary-note">Free cancellation up to 4 hours before your appointment.</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" class="services-section">
+      <div class="wrap">
+        <p class="kicker kicker-dark">Menu</p>
+        <h2>Services &amp; pricing</h2>
+        <p class="section-sub">Honest prices, no surprises. Every service ends with a hot-lather neckline and a styled finish.</p>
+        <div class="service-list" id="serviceList"></div>
+      </div>
+    </section>
+
+    <!-- ============ BARBERS ============ -->
+    <section id="barbers" class="barbers-section">
+      <div class="wrap">
+        <p class="kicker kicker-dark">The chairs</p>
+        <h2>Meet your barbers</h2>
+        <p class="section-sub">Three chairs, three specialties, zero bad hair days.</p>
+        <div class="barber-list" id="barberList"></div>
+      </div>
+    </section>
+
+    <!-- ============ VISIT ============ -->
+    <section id="visit" class="visit-section">
+      <div class="wrap visit-grid">
+        <div>
+          <p class="kicker kicker-dark">Find us</p>
+          <h2>Come say hello</h2>
+          <address>
+            1410 O Street<br>
+            Lincoln, NE 68508<br>
+            <a href="tel:+14025550147">(402) 555-0147</a><br>
+            <a href="mailto:chairs@haymarketbarber.co">chairs@haymarketbarber.co</a>
+          </address>
+        </div>
+        <div>
+          <h3>Shop hours</h3>
+          <table class="hours">
+            <tr><td>Tuesday &ndash; Friday</td><td>9:00 AM &ndash; 6:00 PM</td></tr>
+            <tr><td>Saturday</td><td>9:00 AM &ndash; 6:00 PM</td></tr>
+            <tr><td>Sunday &amp; Monday</td><td>Closed</td></tr>
+          </table>
+          <p class="panel-note">Walk-ins welcome when a chair is free, but booking ahead guarantees your spot.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>&copy; 2026 Haymarket Barber Co., Lincoln, NE. A demonstration site. Bookings are stored in your browser only.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
