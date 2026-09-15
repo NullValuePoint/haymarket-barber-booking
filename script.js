@@ -309,6 +309,8 @@
       var s = i + 1;
       li.classList.toggle("active", s === n);
       li.classList.toggle("done", s < n);
+      if (s === n) li.setAttribute("aria-current", "step");
+      else li.removeAttribute("aria-current");
     });
     $("#backBtn").disabled = n === 1 || n === 5;
     $("#stepNav").style.display = n === 5 ? "none" : "flex";
@@ -445,6 +447,7 @@
         c.setAttribute("aria-selected", String(on));
       });
       renderSlots();
+      updateSummary();
       updateNavState();
     });
 
