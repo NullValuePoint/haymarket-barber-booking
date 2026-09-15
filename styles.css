@@ -199,7 +199,7 @@ a { color: inherit; }
 .hero-stats span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.75; }
 
 /* ---------- Booking widget ---------- */
-.booking-section { padding: 5rem 0; }
+.booking-section { padding: 5rem 0; scroll-margin-top: 80px; }
 .booking-widget {
   background: var(--white);
   border: 1px solid var(--line);
